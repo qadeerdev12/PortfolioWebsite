@@ -17,10 +17,6 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Qadeer Afzal | Software Engineer",
   description: "Portfolio of Qadeer Afzal, Software Engineer. Crafting fast, scalable web applications with modern technologies.",
-  icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-icon.png",
-  },
 };
 
 export default function RootLayout({
