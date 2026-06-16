@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Send } from "lucide-react";
+import { Mail, Send, MapPin } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./Icons";
 
 export function Contact() {
@@ -16,7 +16,6 @@ export function Contact() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
       setFormState({ name: "", email: "", message: "" });
@@ -25,88 +24,108 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-background">
+    <section id="contact" className="py-28 relative">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8 }}
-          className="mx-auto max-w-2xl lg:text-center mb-16"
+          transition={{ duration: 0.6 }}
+          className="mb-16"
         >
-          <h2 className="text-base font-semibold leading-7 text-primary uppercase tracking-wider">
-            Get in touch
+          <span className="text-sm font-mono text-primary tracking-wider">CONTACT</span>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mt-3">
+            Let&apos;s{" "}
+            <span className="dark:gradient-text gradient-text-light">connect</span>
           </h2>
-          <p className="mt-2 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Let&apos;s work together
-          </p>
-          <p className="mt-6 text-lg leading-8 text-muted-foreground">
+          <p className="mt-4 text-lg text-muted-foreground max-w-xl">
             Have a project in mind or just want to say hi? I&apos;d love to hear from you.
           </p>
         </motion.div>
 
-        <div className="mx-auto max-w-4xl grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Info */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-5xl">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-col gap-8"
+            transition={{ duration: 0.5 }}
+            className="space-y-4"
           >
-            <div className="bg-card p-8 rounded-2xl border border-border shadow-sm">
-              <h3 className="text-xl font-bold text-foreground mb-6">Contact Information</h3>
-              
-              <div className="space-y-6">
-                <a href="mailto:Qadeerdev12@gmail.com" className="flex items-center gap-4 group">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                    <Mail className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-muted-foreground">Email</p>
-                    <p className="text-base font-semibold text-foreground group-hover:text-primary transition-colors">
-                      Qadeerdev12@gmail.com
-                    </p>
-                  </div>
-                </a>
-                
-                <a href="https://www.linkedin.com/in/qadeer-afzal-536a58246/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                    <LinkedinIcon className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-muted-foreground">LinkedIn</p>
-                    <p className="text-base font-semibold text-foreground group-hover:text-primary transition-colors">
-                      Qadeer Afzal
-                    </p>
-                  </div>
-                </a>
-                
-                <a href="https://github.com/qadeerdev12" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                    <GithubIcon className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-muted-foreground">GitHub</p>
-                    <p className="text-base font-semibold text-foreground group-hover:text-primary transition-colors">
-                      qadeerdev12
-                    </p>
-                  </div>
-                </a>
+            <a
+              href="mailto:Qadeerdev12@gmail.com"
+              className="flex items-center gap-4 p-5 rounded-xl bg-card border border-border/50 hover:border-primary/30 transition-all duration-300 group card-glow"
+            >
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                <Mail className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <div className="text-xs text-muted-foreground mb-0.5">Email</div>
+                <div className="text-sm font-medium group-hover:text-primary transition-colors">
+                  Qadeerdev12@gmail.com
+                </div>
+              </div>
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/qadeer-afzal-536a58246/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-4 p-5 rounded-xl bg-card border border-border/50 hover:border-primary/30 transition-all duration-300 group card-glow"
+            >
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                <LinkedinIcon className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <div className="text-xs text-muted-foreground mb-0.5">LinkedIn</div>
+                <div className="text-sm font-medium group-hover:text-primary transition-colors">
+                  Qadeer Afzal
+                </div>
+              </div>
+            </a>
+
+            <a
+              href="https://github.com/qadeerdev12"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-4 p-5 rounded-xl bg-card border border-border/50 hover:border-primary/30 transition-all duration-300 group card-glow"
+            >
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                <GithubIcon className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <div className="text-xs text-muted-foreground mb-0.5">GitHub</div>
+                <div className="text-sm font-medium group-hover:text-primary transition-colors">
+                  qadeerdev12
+                </div>
+              </div>
+            </a>
+
+            <div className="flex items-center gap-4 p-5 rounded-xl bg-card border border-border/50">
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                <MapPin className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <div className="text-xs text-muted-foreground mb-0.5">Location</div>
+                <div className="text-sm font-medium">Sydney, Australia</div>
               </div>
             </div>
           </motion.div>
 
-          {/* Contact Form */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5 }}
           >
-            <form onSubmit={handleSubmit} className="bg-card p-8 rounded-2xl border border-border shadow-sm flex flex-col gap-6">
+            <form
+              onSubmit={handleSubmit}
+              className="rounded-2xl bg-card border border-border/50 p-8 space-y-5"
+            >
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                <label
+                  htmlFor="name"
+                  className="block text-xs font-medium text-muted-foreground mb-2"
+                >
                   Name
                 </label>
                 <input
@@ -114,14 +133,19 @@ export function Contact() {
                   id="name"
                   required
                   value={formState.name}
-                  onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                  className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                  onChange={(e) =>
+                    setFormState({ ...formState, name: e.target.value })
+                  }
+                  className="w-full px-4 py-3 bg-background rounded-xl border border-border/50 text-sm focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/25 transition-all"
                   placeholder="Your name"
                 />
               </div>
-              
+
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                <label
+                  htmlFor="email"
+                  className="block text-xs font-medium text-muted-foreground mb-2"
+                >
                   Email
                 </label>
                 <input
@@ -129,14 +153,19 @@ export function Contact() {
                   id="email"
                   required
                   value={formState.email}
-                  onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                  className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
-                  placeholder="your.email@example.com"
+                  onChange={(e) =>
+                    setFormState({ ...formState, email: e.target.value })
+                  }
+                  className="w-full px-4 py-3 bg-background rounded-xl border border-border/50 text-sm focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/25 transition-all"
+                  placeholder="your@email.com"
                 />
               </div>
-              
+
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                <label
+                  htmlFor="message"
+                  className="block text-xs font-medium text-muted-foreground mb-2"
+                >
                   Message
                 </label>
                 <textarea
@@ -144,19 +173,21 @@ export function Contact() {
                   required
                   rows={4}
                   value={formState.message}
-                  onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                  className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none"
-                  placeholder="How can I help you?"
+                  onChange={(e) =>
+                    setFormState({ ...formState, message: e.target.value })
+                  }
+                  className="w-full px-4 py-3 bg-background rounded-xl border border-border/50 text-sm focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/25 transition-all resize-none"
+                  placeholder="Your message..."
                 />
               </div>
-              
+
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-3 px-6 rounded-lg bg-primary text-primary-foreground font-semibold flex items-center justify-center gap-2 hover:bg-primary/90 focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background transition-all disabled:opacity-70 disabled:cursor-not-allowed"
+                className="w-full py-3.5 px-6 bg-primary text-primary-foreground rounded-xl text-sm font-semibold flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-primary/25 hover:scale-[1.01] transition-all duration-300 disabled:opacity-50"
               >
                 {isSubmitting ? (
-                  <span className="w-5 h-5 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin" />
+                  <span className="w-4 h-4 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin" />
                 ) : (
                   <>
                     Send Message
