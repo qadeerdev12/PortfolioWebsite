@@ -5,21 +5,21 @@ import { Code2, Brain, Rocket } from "lucide-react";
 
 const features = [
   {
-    name: "Full-Stack Development",
+    name: "Clean Code",
     description:
-      "MERN stack specialist. Building end-to-end applications — from pixel-perfect interfaces to robust APIs and scalable backends.",
+      "Writing readable, maintainable code. Focused on solid fundamentals and building good habits from the start.",
     icon: Code2,
   },
   {
-    name: "Problem Solver",
+    name: "Always Learning",
     description:
-      "Approaching complex challenges with a logical mindset. Finding efficient, elegant solutions to technical problems.",
+      "Actively upskilling through personal projects and courses. Picking up new tools and technologies to become a better engineer.",
     icon: Brain,
   },
   {
-    name: "Impact Driven",
+    name: "Team Player",
     description:
-      "Creating applications that solve real needs. Delivering exceptional user experiences that make a tangible difference.",
+      "Eager to collaborate, take feedback, and contribute to a team. Bringing energy, curiosity, and a strong willingness to grow.",
     icon: Rocket,
   },
 ];
@@ -37,13 +37,13 @@ export function About() {
         >
           <span className="text-sm font-mono text-primary tracking-wider">ABOUT ME</span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mt-3">
-            Building the web{" "}
-            <span className="dark:gradient-text gradient-text-light">of tomorrow</span>
+            Building software{" "}
+            <span className="dark:gradient-text gradient-text-light">that matters</span>
           </h2>
           <p className="mt-6 text-lg text-muted-foreground max-w-2xl leading-relaxed">
-            Software Engineer dedicated to crafting high-quality, modern web
-            applications. Strong foundation in JavaScript frameworks with a keen
-            eye for design — bridging aesthetic interfaces and robust architectures.
+            Software Engineer with a passion for problem-solving and writing
+            clean code. Open to exploring different domains and technologies —
+            always looking for opportunities to learn, build, and grow.
           </p>
         </motion.div>
 

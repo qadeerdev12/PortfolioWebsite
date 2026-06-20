@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Qadeer Afzal | Software Engineer",
-  description: "Portfolio of Qadeer Afzal, Software Engineer. Crafting fast, scalable web applications with modern technologies.",
+  description: "Portfolio of Qadeer Afzal, Software Engineer. Building clean, functional web applications with modern technologies.",
 };
 
 export default function RootLayout({

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Download, ChevronDown } from "lucide-react";
 
@@ -34,103 +34,99 @@ function TypeWriter({ text, delay = 0 }: { text: string; delay?: number }) {
 }
 
 function HeroAvatar() {
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = (e.clientX - rect.left - rect.width / 2) / rect.width;
-    const y = (e.clientY - rect.top - rect.height / 2) / rect.height;
-    setMousePos({ x, y });
-  };
-
-  const handleMouseLeave = () => setMousePos({ x: 0, y: 0 });
-
   return (
-    <div
-      className="relative w-[300px] h-[360px] sm:w-[340px] sm:h-[400px] md:w-[380px] md:h-[440px]"
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{ perspective: "800px" }}
-    >
-      {/* Back card 2 — gradient accent */}
-      <motion.div
-        className="absolute inset-0 rounded-3xl bg-gradient-to-br from-accent/20 to-accent/5 border border-accent/20"
-        animate={{
-          rotateY: mousePos.x * 8,
-          rotateX: -mousePos.y * 8,
-          x: mousePos.x * -15,
-          y: mousePos.y * -15,
-        }}
-        transition={{ type: "spring", stiffness: 150, damping: 20 }}
+    <div className="relative w-[340px] h-[340px] sm:w-[380px] sm:h-[380px] md:w-[420px] md:h-[420px] flex items-center justify-center">
+      {/* Outer dashed ring — slow reverse */}
+      <div
+        className="hero-orbit-ring-reverse absolute rounded-full border border-dashed dark:border-accent/30 border-accent/25"
         style={{
-          transformStyle: "preserve-3d",
-          top: "16px",
-          left: "16px",
-          right: "-16px",
-          bottom: "-16px",
+          width: "100%",
+          height: "100%",
+          animationDuration: "20s",
         }}
       />
 
-      {/* Back card 1 — primary gradient */}
-      <motion.div
-        className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20"
-        animate={{
-          rotateY: mousePos.x * 10,
-          rotateX: -mousePos.y * 10,
-          x: mousePos.x * -8,
-          y: mousePos.y * -8,
-        }}
-        transition={{ type: "spring", stiffness: 150, damping: 20 }}
+      {/* Middle dashed ring — forward */}
+      <div
+        className="hero-orbit-ring absolute rounded-full border dark:border-primary/25 border-primary/20"
         style={{
-          transformStyle: "preserve-3d",
-          top: "8px",
-          left: "8px",
-          right: "-8px",
-          bottom: "-8px",
+          width: "82%",
+          height: "82%",
+          animationDuration: "14s",
+          borderStyle: "dashed",
         }}
       />
 
-      {/* Main card — avatar */}
-      <motion.div
-        className="relative w-full h-full rounded-3xl overflow-hidden border-2 border-border/50 bg-card shadow-2xl dark:shadow-primary/5"
-        animate={{
-          rotateY: mousePos.x * 15,
-          rotateX: -mousePos.y * 15,
+      {/* Inner solid ring — slow forward */}
+      <div
+        className="hero-orbit-ring absolute rounded-full border dark:border-primary/15 border-primary/10"
+        style={{
+          width: "65%",
+          height: "65%",
+          animationDuration: "25s",
         }}
-        transition={{ type: "spring", stiffness: 150, damping: 20 }}
-        style={{ transformStyle: "preserve-3d" }}
+      />
+
+      {/* Orbiting dots — outer ring */}
+      <div
+        className="hero-orbit-dot absolute"
+        style={{
+          width: 0,
+          height: 0,
+          top: "50%",
+          left: "50%",
+          animationName: "dot-orbit-1",
+          animationDuration: "6s",
+          "--orbit-radius": "170px",
+        } as React.CSSProperties}
+      >
+        <span className="block w-2.5 h-2.5 rounded-full bg-primary -translate-x-1/2 -translate-y-1/2" />
+      </div>
+      <div
+        className="hero-orbit-dot absolute"
+        style={{
+          width: 0,
+          height: 0,
+          top: "50%",
+          left: "50%",
+          animationName: "dot-orbit-2",
+          animationDuration: "6s",
+          "--orbit-radius": "170px",
+        } as React.CSSProperties}
+      >
+        <span className="block w-2 h-2 rounded-full bg-accent -translate-x-1/2 -translate-y-1/2" />
+      </div>
+
+      {/* Orbiting dot — middle ring */}
+      <div
+        className="hero-orbit-dot absolute"
+        style={{
+          width: 0,
+          height: 0,
+          top: "50%",
+          left: "50%",
+          animationName: "dot-orbit-3",
+          animationDuration: "8s",
+          "--orbit-radius": "140px",
+        } as React.CSSProperties}
+      >
+        <span className="block w-1.5 h-1.5 rounded-full dark:bg-white/50 bg-foreground/40 -translate-x-1/2 -translate-y-1/2" />
+      </div>
+
+      {/* Avatar circle */}
+      <motion.div
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ delay: 0.3, duration: 0.6, type: "spring", stiffness: 120 }}
+        className="relative w-[55%] h-[55%] rounded-full overflow-hidden border-2 dark:border-primary/30 border-primary/25 shadow-2xl dark:shadow-primary/10"
       >
         <img
           src="/avatar.jpg"
           alt="Qadeer Afzal"
           className="w-full h-full object-cover"
+          style={{ objectPosition: "center 50%" }}
         />
-
-        {/* Shine overlay on hover */}
-        <motion.div
-          className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent"
-          animate={{
-            opacity: Math.abs(mousePos.x) + Math.abs(mousePos.y) > 0.05 ? 1 : 0,
-            x: `${mousePos.x * 100}%`,
-          }}
-          transition={{ type: "spring", stiffness: 150, damping: 20 }}
-        />
-
-        {/* Bottom gradient fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-black/40 to-transparent" />
-
-        {/* Name tag */}
-        <div
-          className="absolute bottom-4 left-4 right-4"
-          style={{ transform: "translateZ(30px)" }}
-        >
-          <div className="text-white text-sm font-semibold tracking-wide drop-shadow-lg">
-            Qadeer Afzal
-          </div>
-          <div className="text-white/60 text-xs mt-0.5">
-            Full-Stack Developer
-          </div>
-        </div>
+        <div className="absolute inset-0 rounded-full ring-1 ring-inset dark:ring-white/10 ring-black/5" />
       </motion.div>
     </div>
   );
@@ -178,7 +174,7 @@ export function Hero() {
               >
                 <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
                   <TypeWriter
-                    text="Full-stack developer crafting fast, scalable web applications with modern technologies."
+                    text="Software engineer who loves building clean, scalable applications and solving real-world problems."
                     delay={800}
                   />
                 </p>
@@ -220,9 +216,9 @@ export function Hero() {
                 className="flex justify-center lg:justify-start gap-16 pt-10"
               >
                 {[
-                  { value: "2+", label: "Years Experience" },
-                  { value: "10+", label: "Projects Built" },
-                  { value: "MERN", label: "Core Stack" },
+                  { value: "2024", label: "Graduate" },
+                  { value: "5+", label: "Projects Built" },
+                  { value: "SWE", label: "Software Engineer" },
                 ].map((stat) => (
                   <div key={stat.label} className="text-center lg:text-left">
                     <div className="text-3xl md:text-4xl font-bold text-primary">{stat.value}</div>

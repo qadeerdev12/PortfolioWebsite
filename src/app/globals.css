@@ -123,6 +123,43 @@ html {
   animation-iteration-count: infinite;
 }
 
+@keyframes orbit-spin-reverse {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes dot-orbit-1 {
+  from { transform: rotate(0deg) translateX(var(--orbit-radius)) rotate(0deg); }
+  to { transform: rotate(360deg) translateX(var(--orbit-radius)) rotate(-360deg); }
+}
+
+@keyframes dot-orbit-2 {
+  from { transform: rotate(180deg) translateX(var(--orbit-radius)) rotate(-180deg); }
+  to { transform: rotate(540deg) translateX(var(--orbit-radius)) rotate(-540deg); }
+}
+
+@keyframes dot-orbit-3 {
+  from { transform: rotate(90deg) translateX(var(--orbit-radius)) rotate(-90deg); }
+  to { transform: rotate(450deg) translateX(var(--orbit-radius)) rotate(-450deg); }
+}
+
+.hero-orbit-ring {
+  animation-name: orbit-spin;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.hero-orbit-ring-reverse {
+  animation-name: orbit-spin-reverse;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.hero-orbit-dot {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
 .card-glow {
   box-shadow: 0 0 0 1px var(--border);
   transition: box-shadow 0.3s ease, transform 0.3s ease;
