@@ -6,12 +6,12 @@ import { GithubIcon } from "./Icons";
 
 const projects = [
   {
-    title: "Applyflow",
+    title: "TailorTrac",
     description:
       "Full-stack MERN application for managing job applications. JWT authentication, interactive dashboards with analytics, and a modern SaaS-style UI.",
     tags: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS", "JWT", "Recharts"],
     github: "https://github.com/qadeerdev12/job-tracker-frontend",
-    demo: "https://applyflow-one-ruby.vercel.app/",
+    demo: "https://www.tailortrac.com/",
   },
 ];
 
